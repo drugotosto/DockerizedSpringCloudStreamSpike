@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: kafkaserver:9092
+      bindings:
+        # Spring Cloud Stream (Input) Channel
+        greetings-in:
+          # Kafka Topic
+          destination: greetings
+          content-type: application/json
+#          Attributo che (insieme all'utilizzo dei sharded/partitionated channel) permette di avere MULTIPLE ISTANZE
+#          di consumer in grado di gestire i diversi messaggi  mantenendone l'ORDINE di arrivo. Ogni messaggio in
+#          arrivo verrà consumato da una sola istanza di servizio.
+#          group: licensingGroup
